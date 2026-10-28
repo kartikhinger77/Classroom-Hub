@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f7fb">
+  <meta name="description" content="Classroom Hub school notes and exercises">
+  <title>Classroom Hub</title>
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="icon" href="/assets/school-logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/css/app.css">
+  <script src="/js/app.js" defer></script>
+</head>
+<body class="app-body">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="Classroom Hub home"><span class="brand-mark" aria-hidden="true">CH</span><span><strong>Classroom Hub</strong><small>Learning, shared</small></span></a>
+    <div class="header-actions"><button id="theme-toggle" class="icon-button" type="button" aria-label="Toggle light and dark mode">◐</button><button id="notifications-open" class="icon-button" type="button" aria-label="New post notifications">♧</button><button id="account-open" class="avatar-button" type="button" aria-label="Open account">Account</button><button id="admin-open" class="avatar-button" type="button" hidden>Admin</button><img class="school-logo" src="/assets/school-logo.svg" alt="School logo"></div>
+  </header>
+  <div id="announcement" class="announcement" hidden></div>
+  <main id="main" class="page-shell">
+    <section class="welcome-row"><div><p class="eyebrow">YOUR CLASSROOM LIBRARY</p><h1 id="welcome-title">Notes and exercises</h1><p class="muted">Find the material you need and keep learning.</p></div><button id="create-post" class="button primary" type="button" hidden>＋ Create a post</button></section>
+    <nav class="main-tabs" aria-label="Learning materials"><button class="main-tab active" type="button" data-type="note" aria-selected="true">Notes</button><button class="main-tab" type="button" data-type="exercise" aria-selected="false">Exercise</button></nav>
+    <section class="filters" aria-label="Search and filter posts"><label class="field search-field"><span>Search</span><input id="search-input" type="search" placeholder="Search titles or subjects" autocomplete="off"></label><label class="field"><span>Subject</span><select id="subject-filter"><option value="">All subjects</option></select></label><label class="field"><span>From</span><input id="date-from" type="date"></label><label class="field"><span>To</span><input id="date-to" type="date"></label><button id="saved-toggle" class="button secondary" type="button" aria-pressed="false">☆ Saved</button></section>
+    <div id="post-status" class="sr-only" role="status" aria-live="polite"></div>
+    <section id="post-list" class="post-grid" aria-label="Posts"></section>
+    <div class="pagination"><button id="previous-page" class="button secondary" type="button">Previous</button><span id="page-label" class="muted">Page 1</span><button id="next-page" class="button secondary" type="button">Next</button></div>
+
+    <section id="account-panel" class="panel" hidden>
+      <div class="panel-heading"><div><p class="eyebrow">ACCOUNT CENTER</p><h2>Your details</h2></div><button class="button secondary close-panel" type="button">Back to materials</button></div>
+      <form id="profile-form" class="form-grid"><label class="field"><span>Name</span><input name="name" maxlength="100" required></label><label class="field"><span>Email</span><input name="email" type="email" required><small>A change takes effect after you confirm the email link.</small></label><label class="field full-width"><span>Bio</span><textarea name="bio" rows="3" maxlength="500"></textarea></label><label class="field"><span>Profile photo</span><input name="avatar" type="file" accept="image/png,image/jpeg,image/webp"></label><button class="button primary form-submit" type="submit">Save details</button></form>
+      <div class="two-column-panels"><form id="password-form" class="card form-stack"><h3>Change password</h3><label class="field"><span>Current password</span><input name="currentPassword" type="password" autocomplete="current-password" required></label><label class="field"><span>New password</span><input name="password" type="password" autocomplete="new-password" minlength="8" required><small>At least 8 characters with uppercase, lowercase, and a number.</small></label><button class="button primary" type="submit">Update password</button></form><section class="card"><h3>Active sessions</h3><div id="session-list" class="session-list"></div><button id="logout-all" class="button danger" type="button">Log out of all devices</button></section></div>
+      <section class="card privacy-actions"><h3>Your data</h3><p id="deletion-status">Download a copy of your profile and activity or schedule account deletion. Deletion takes effect after seven days.</p><div class="button-row"><button id="export-data" class="button secondary" type="button">Download my data</button><button id="delete-account" class="button danger" type="button">Delete my account</button><button id="cancel-delete" class="button secondary" type="button" hidden>Cancel deletion</button></div></section>
+      <section id="security-2fa" class="card"><h3>Two-step verification</h3><p id="twofa-status" class="muted">Use an authenticator app to add another sign-in step.</p><button id="twofa-enable" class="button secondary" type="button">Set up authenticator</button></section>
+    </section>
+
+    <section id="admin-panel" class="panel" hidden>
+      <div class="panel-heading"><div><p class="eyebrow">ADMINISTRATION</p><h2>Manage Classroom Hub</h2></div><button class="button secondary close-panel" type="button">Back to materials</button></div>
+      <div class="admin-subnav"><button class="button secondary active" data-admin-view="users" type="button">Users</button><button class="button secondary" data-admin-view="subjects" type="button">Subjects</button><button class="button secondary" data-admin-view="audit" type="button">Audit log</button><button class="button secondary" data-admin-view="trash" type="button">Trash</button><button class="button secondary" data-admin-view="dashboard" type="button">Dashboard</button><button class="button secondary" data-admin-view="settings" type="button">Settings</button></div>
+      <div id="admin-content"></div>
+    </section>
+    <section id="help-panel" class="panel" hidden><div class="panel-heading"><div><p class="eyebrow">HELP</p><h2>Quick answers</h2></div><button class="button secondary close-panel" type="button">Back to materials</button></div><details><summary>How do I find a note?</summary><p>Choose Notes, then search or filter by subject and date.</p></details><details><summary>How do I save a post?</summary><p>Use the Save button on a post. Saved posts stay inside Notes or Exercise using the Saved filter.</p></details><details><summary>How do I download a PDF?</summary><p>Open a post and select Download PDF.</p></details><details><summary>How can I change my password?</summary><p>Open Account and use the Change password form.</p></details><p><a href="/student-guide.html">Student guide</a> · <a href="/teacher-guide.html">Teacher guide</a> · <a href="/admin-guide.html">Admin guide</a></p></section>
+  </main>
+  <nav class="mobile-nav" aria-label="Main navigation"><button type="button" data-mobile-type="note" class="active">Notes</button><button type="button" data-mobile-type="exercise">Exercise</button><button id="mobile-account" type="button">Account</button><button id="mobile-admin" type="button" hidden>Admin</button></nav>
+  <footer class="site-footer"><button id="help-open" class="text-button" type="button">Help</button><a href="/privacy.html">Privacy</a><a href="/terms.html">Terms</a><span>Only essential cookies are used.</span><button id="logout" class="text-button" type="button">Sign out</button></footer>
+  <dialog id="post-dialog" class="modal"><form method="dialog" class="modal-close"><button class="icon-button" aria-label="Close">×</button></form><div id="post-dialog-content"></div></dialog>
+  <dialog id="editor-dialog" class="modal modal-wide"><form method="dialog" class="modal-close"><button class="icon-button" aria-label="Close">×</button></form><div id="editor-content"></div></dialog>
+  <div id="toast-region" class="toast-region" aria-live="polite" aria-atomic="true"></div>
+</body>
+</html>

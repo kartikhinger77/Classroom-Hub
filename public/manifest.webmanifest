@@ -1,0 +1,10 @@
+{
+  "name": "Classroom Hub",
+  "short_name": "Classroom Hub",
+  "description": "School notes and exercises",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f4f7fb",
+  "theme_color": "#f4f7fb",
+  "icons": [{ "src": "/assets/school-logo.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }]
+}

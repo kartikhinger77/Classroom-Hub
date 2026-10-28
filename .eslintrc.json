@@ -1,0 +1,13 @@
+{
+  "env": { "node": true, "browser": true, "es2022": true, "jest": true },
+  "extends": [],
+  "parserOptions": { "ecmaVersion": "latest" },
+  "rules": {
+    "no-unused-vars": ["error", { "argsIgnorePattern": "^_", "caughtErrorsIgnorePattern": "^_" }],
+    "no-undef": "error",
+    "no-console": "error",
+    "eqeqeq": ["error", "always"],
+    "curly": "error",
+    "no-eval": "error"
+  }
+}
